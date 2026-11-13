@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ app_name }}</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+    <script
+        src="{{ url_for('static', filename='js/app.js') }}"
+        defer
+    ></script>
+</head>
+<body>
+    <main class="container">
+
+        <!-- Page header -->
+        <header class="page-header">
+            <h1>{{ app_name }}</h1>
+            <p>Weather forecasts for any city.</p>
+        </header>
+
+        <!-- City search -->
+        <form id="search-form" class="search-form">
+            <label for="city-input" class="visually-hidden">
+                City name
+            </label>
+
+            <input
+                id="city-input"
+                name="city"
+                type="text"
+                placeholder="Search for a city..."
+                autocomplete="off"
+                required
+            >
+
+            <button id="search-button" type="submit">
+                Search
+            </button>
+        </form>
+
+        <!-- Status messages -->
+        <p
+            id="status"
+            class="status"
+            role="status"
+            aria-live="polite"
+        ></p>
+
+        <!-- Weather dashboard -->
+        <section id="weather-dashboard" class="weather-dashboard" hidden>
+
+            <!-- Location information -->
+            <header class="location-header">
+                <h2 id="location-name"></h2>
+                <p id="location-details"></p>
+            </header>
+
+            <!-- Current weather -->
+            <section class="current-weather">
+
+                <div class="main-temperature">
+
+                    <span id="weather-icon" class="weather-icon"></span>
+
+                    <p>
+                        <span id="current-temperature"></span>
+                        <span id="temperature-unit">°C</span>
+                    </p>
+
+                    <!-- Temperature unit toggle -->
+                    <div class="unit-toggle">
+                        <button
+                            type="button"
+                            id="celsius-button"
+                            class="active"
+                            aria-pressed="true"
+                        >
+                            °C
+                        </button>
+
+                        <button
+                            type="button"
+                            id="fahrenheit-button"
+                            aria-pressed="false"
+                        >
+                            °F
+                        </button>
+                    </div>
+
+                    <h3 id="weather-description"></h3>
+
+                </div>
+
+                <!-- Weather details -->
+                <div class="weather-details">
+
+                    <article class="weather-card">
+                        <h3>Feels Like</h3>
+                        <p id="feels-like"></p>
+                    </article>
+
+                    <article class="weather-card">
+                        <h3>Humidity</h3>
+                        <p id="humidity"></p>
+                    </article>
+
+                    <article class="weather-card">
+                        <h3>Wind Speed</h3>
+                        <p id="wind-speed"></p>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- Hourly forecast -->
+            <section class="forecast-section">
+                <h2>Hourly Forecast</h2>
+                <div id="hourly-forecast" class="forecast-grid"></div>
+            </section>
+
+            <!-- Seven-day forecast -->
+            <section class="forecast-section">
+                <h2>7-Day Forecast</h2>
+                <div id="daily-forecast" class="forecast-grid"></div>
+            </section>
+
+        </section>
+    </main>
+</body>
+</html>
